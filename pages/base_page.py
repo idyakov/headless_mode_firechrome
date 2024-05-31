@@ -27,7 +27,7 @@ class HomePage(Page):
 
     def verify_user_name(self, name):
         print('name:', name)
-
+#
 
 class HelpPage(Page):
     SIGN_IN_BUTTON_MAIN_PAGE = (By.CSS_SELECTOR, 'span[class="styles__LinkText-sc-1e1g60c-3 dZfgoT h-margin-r-x3"]')

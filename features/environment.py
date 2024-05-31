@@ -3,53 +3,47 @@ from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
 from webdriver_manager.firefox import GeckoDriverManager
 from selenium.webdriver.chrome.options import Options as ChromeOptions
+from selenium.webdriver.firefox.options import Options as FirefoxOptions
 from app.application import Application
-from selenium.webdriver.chrome.options import Options
 
-
-def browser_init(context):
-    # driver_path = './chromedriver.exe'
-    # context.driver = webdriver.Chrome(executable_path=driver_path)
-    # #
-    # driver_path = ChromeDriverManager().install()
-    # service = Service(driver_path)
-    # context.driver = webdriver.Chrome(service=service)
-
-    # driver_path = GeckoDriverManager().install()
-    # service = Service(driver_path)
-    # context.driver = webdriver.Firefox(service=service)
-
-    ### BROWSERS WITH DRIVERS: provide path to the driver file ###
-    # service = Service(executable_path='C:\Users\User\Downloads\geckodriver-0.34.0')
-    # context.driver = webdriver.Firefox(service=service)
-
-    ### SAFARI ###
-    # context.driver = webdriver.Safari()
+#
+def browser_init(context, browser_type="chrome", headless=False):
     """
     :param context: Behave context
+    :param browser_type: Type of browser to initialize ("chrome" or "firefox")
+    :param headless: Whether to run the browser in headless mode
     """
-    driver_path = ChromeDriverManager().install()
-    service = Service(driver_path)
-    context.driver = webdriver.Chrome(service=service)
+    if browser_type == "chrome":
+        options = ChromeOptions()
+        if headless:
+            options.add_argument("--headless")
+            options.add_argument('--window-size=1920,1080')
+        driver_path = ChromeDriverManager().install()
+        service = Service(driver_path)
+        context.driver = webdriver.Chrome(service=service, options=options)
+
+    elif browser_type == "firefox":
+        options = FirefoxOptions()
+        if headless:
+            options.add_argument("--headless")
+            options.add_argument('--window-size=1920,1080')
+        driver_path = GeckoDriverManager().install()
+        service = Service(driver_path)
+        context.driver = webdriver.Firefox(service=service, options=options)
+
+    else:
+        raise ValueError(f"Unsupported browser type: {browser_type}")
 
     context.driver.maximize_window()
     context.driver.implicitly_wait(4)
     context.app = Application(context.driver)
-    # Setup Chrome options for headless mode
-    ### HEADLESS MODE ####
-    options = webdriver.ChromeOptions()
-    options.add_argument('headless')
-    options.add_argument('--window-size=1920,1080')
-    service = Service(ChromeDriverManager().install())
-    context.driver = webdriver.Chrome(
-        options=options,
-        service=service
-    )
 
 
 def before_scenario(context, scenario):
     print('\nStarted scenario: ', scenario.name)
-    browser_init(context)
+    browser_type = "chrome"  # Change to "firefox" for Firefox
+    headless = True  # Set to True for headless mode
+    browser_init(context, browser_type, headless)
 
 
 def before_step(context, step):

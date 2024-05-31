@@ -13,3 +13,4 @@ Feature: Test Scenarios for Search functionality of soft.reelly page
     7. And Click on Save changes
     8. And Check the right information is present in the input fields
     9. And Click on Close
+#

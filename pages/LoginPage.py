@@ -3,8 +3,10 @@ from pages.base_page import Page
 from selenium.webdriver.common.by import By
 from time import sleep
 from selenium.webdriver.support import expected_conditions as EC
-
-
+from webdriver_manager.firefox import GeckoDriverManager
+from selenium.webdriver.chrome.options import Options as ChromeOptions
+from selenium.webdriver.firefox.options import Options as FirefoxOptions
+#
 class LoginPage(Page):
     CONTINUE_BUTTON = (By.CSS_SELECTOR, 'a[class="login-button w-button"]')
     SIGN_IN_BUTTON_MAIN_PAGE = (By.CSS_SELECTOR, 'span[class="styles__LinkText-sc-1e1g60c-3 dZfgoT h-margin-r-x3"]')
@@ -57,3 +59,4 @@ class LoginPage(Page):
 
     def click_on_close(self):
         self.click(*self.CLICK_CLOSE)
+

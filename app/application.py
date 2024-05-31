@@ -4,7 +4,7 @@ from pages.MainPage import MainPage
 # from pages.header import Header
 from pages.LoginPage import LoginPage
 
-
+#
 class Application:
     def __init__(self, driver):
         self.base_page = Page(driver)
