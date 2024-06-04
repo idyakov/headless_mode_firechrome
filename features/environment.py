@@ -50,7 +50,7 @@ def browser_init(context, browser_type="chrome", headless=False):
         'os': 'Windows',
         'osVersion': '10',
         'browserName': 'Chrome',
-        'sessionName': 'User is able to open Privacy Policy'
+        'sessionName': 'Test Scenarios for Search functionality of soft.reelly page'
     }
 
     options.set_capability('bstack:options', bstack_options)
