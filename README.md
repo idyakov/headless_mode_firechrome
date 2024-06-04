@@ -1,4 +1,4 @@
-![](br_config_win1.png)
+![](br_config_win.png)
 
 Browserstalk_windows_cloud_config_test
 Feature: Test Scenarios for Search functionality of soft.reelly page
