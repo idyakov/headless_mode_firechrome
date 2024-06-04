@@ -6,6 +6,8 @@ from selenium.webdriver.chrome.options import Options as ChromeOptions
 from selenium.webdriver.firefox.options import Options as FirefoxOptions
 from app.application import Application
 from selenium.webdriver.chrome.options import Options
+
+
 #
 def browser_init(context, browser_type="chrome", headless=False):
     # """
@@ -38,18 +40,21 @@ def browser_init(context, browser_type="chrome", headless=False):
     # context.driver.implicitly_wait(4)
     # context.app = Application(context.driver)
 
-
     ## BROWSERSTACK ###
     # Register for BrowserStack, then grab it from https://www.browserstack.com/accounts/settings
-    bs_user = 'idyakov_etLzbT'
-    bs_key = 'djMq7KBSFzzFZwu4B3eu'
+    bs_user = '********'
+    bs_key = '*********'
     url = f'http://{bs_user}:{bs_key}@hub-cloud.browserstack.com/wd/hub'
 
     options = Options()
     bstack_options = {
-        'os': 'Windows',
-        'osVersion': '10',
-        'browserName': 'Chrome',
+        'os': 'OS X',
+        'osVersion': 'Sonoma',
+        #        'osVersion': 'Windows',
+        'browserName': 'Safari',
+        #         'browserName': 'Chrome',
+        'browserVersion': '17.3',
+        #         'browserVersion': 'latest_version',
         'sessionName': 'Test Scenarios for Search functionality of soft.reelly page'
     }
 
