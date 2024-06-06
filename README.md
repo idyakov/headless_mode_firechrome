@@ -1,5 +1,5 @@
 Allure setup console_configuration
-![](Console setup allure report configuration.png)
+![](br_Console%20setup%20allure%20report%20configuration.png)
 
 allur_ui_report
 ![](Allure UI report.png)
