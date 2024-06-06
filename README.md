@@ -1,8 +1,8 @@
 Allure setup console_configuration
-![](br_config__win.png)
+![](console_setup_allure_report_configuration.png)
 
 allur_ui_report
-![](console_setup_allure_report_configuration.png)
+![](allure_UI_report.png)
 
 Browserstalk_Windows_cloud_config_test
 
